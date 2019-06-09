@@ -82,6 +82,17 @@ bool GNSSLocation::fullyResolved(void) const
     return !!(_location.mask & GNSS_LOCATION_MASK_RESOLVED);
 }
 
+bool GNSSLocation::aopCfgStatus(void) const
+{
+    return !!(_location.mask & GNSS_LOCATION_MASK_AOPCFG);
+}
+
+bool GNSSLocation::aopStatus(void) const
+{
+    return !!(_location.mask & GNSS_LOCATION_MASK_AOPSTATUS);
+}
+
+
 unsigned int GNSSLocation::satellites(void) const
 {
     return _location.numsv;
@@ -347,9 +358,9 @@ void GNSSClass::begin(Uart &uart, GNSSmode mode, GNSSrate rate)
     stm32l0_gpio_pin_configure(STM32L0_CONFIG_PIN_GNSS_ENABLE, (STM32L0_GPIO_PARK_NONE | STM32L0_GPIO_PUPD_PULLUP | STM32L0_GPIO_OSPEED_LOW | STM32L0_GPIO_OTYPE_PUSHPULL | STM32L0_GPIO_MODE_OUTPUT));
     stm32l0_gpio_pin_write(STM32L0_CONFIG_PIN_GNSS_ENABLE, 1);
 
-    while (!stm32l0_gpio_pin_read(STM32L0_CONFIG_PIN_GNSS_RX))
-    {
-    }
+    //while (!stm32l0_gpio_pin_read(STM32L0_CONFIG_PIN_GNSS_RX))
+    //{
+    //}
 #endif /* defined(STM32L0_CONFIG_PIN_GNSS_ENABLE) */
 
 #if defined(STM32L0_CONFIG_PIN_GNSS_PPS)

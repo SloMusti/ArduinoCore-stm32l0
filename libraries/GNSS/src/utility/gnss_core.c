@@ -174,6 +174,7 @@ typedef struct _nmea_context_t {
 #define UBX_MESSAGE_MASK_NAV_SVINFO                   0x00100000
 #define UBX_MESSAGE_MASK_NAV_TIMEGPS                  0x00200000
 #define UBX_MESSAGE_MASK_SOLUTION                     0x00008000
+#define UBX_MESSAGE_MASK_AOPSTATUS                    0x00408000
 
 typedef struct _ubx_context_t {
     uint8_t             ck_a;
@@ -2215,6 +2216,18 @@ static void ubx_end_message(gnss_device_t *device, unsigned int message, uint8_t
 
             device->seen |= UBX_MESSAGE_MASK_NAV_SAT;
             break;
+            
+        case 0x60:
+            /* UBX-NAV-AOPSTATUS */
+            if ((ubx_data_uint8(data, 4) & 0x01) == 0x01)
+            {
+                device->location.mask |= GNSS_LOCATION_MASK_AOPCFG;
+            }
+            if ((ubx_data_uint8(data, 5) & 0x01) == 0x01)
+            {
+                device->location.mask |= GNSS_LOCATION_MASK_AOPSTATUS;
+            }
+            device->seen |= UBX_MESSAGE_MASK_AOPSTATUS;
 
         default:
             break;

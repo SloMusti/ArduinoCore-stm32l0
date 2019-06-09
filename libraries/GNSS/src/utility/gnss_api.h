@@ -95,6 +95,8 @@ typedef struct _utc_time_t {
 #define GNSS_LOCATION_MASK_PDOP           0x0400
 #define GNSS_LOCATION_MASK_HDOP           0x0800
 #define GNSS_LOCATION_MASK_VDOP           0x1000
+#define GNSS_LOCATION_MASK_AOPSTATUS      0x2000
+#define GNSS_LOCATION_MASK_AOPCFG         0x4000
 
 typedef struct _gnss_location_t {
     utc_time_t     time;             /* UTC date/time                */

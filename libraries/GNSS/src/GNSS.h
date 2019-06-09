@@ -63,6 +63,9 @@ public:
     enum GNSSfixType fixType(void) const;
     enum GNSSfixQuality fixQuality(void) const;
     bool fullyResolved(void) const;
+    bool aopCfgStatus(void) const;
+    bool aopStatus(void) const;
+    
     unsigned int satellites(void) const;
 
     uint16_t year(void) const;
