@@ -2364,6 +2364,22 @@ static const uint8_t ubx_cfg_msg_nav_dop[] = {
     0x15, 0xcc,                                     /* CK_A, CK_B                */
 };
 
+static const uint8_t ubx_cfg_msg_nav_aopstatus[] = {
+    0xb5, 0x62,                                     /* SYNC_CHAR_1, SYNC_CHAR_2  */
+    0x06, 0x01,                                     /* CLASS, ID                 */
+    0x08, 0x00,                                     /* LENGTH                    */
+    0x01,                                           /* CLASS                     */
+    0x60,                                           /* ID                        */
+    0x00,                                           /* RATE DDC                  */
+    0x01,                                           /* RATE UART1                */
+    0x00,                                           /* RATE UART2                */
+    0x00,                                           /* RATE USB                  */
+    0x00,                                           /* RATE SPI                  */
+    0x00,                                           /*                           */
+    0x71, 0x50,                                     /* CK_A, CK_B                */
+};
+
+
 static const uint8_t ubx_cfg_msg_nav_sat_1hz[] = {
     0xb5, 0x62,                                     /* SYNC_CHAR_1, SYNC_CHAR_2  */
     0x06, 0x01,                                     /* CLASS, ID                 */
@@ -3048,6 +3064,7 @@ static const uint8_t * const ubx_qzss_disable_table[] = {
 
 static const uint8_t * const ubx_aop_enable_table[] = {
     ubx_cfg_rxm_continuous,
+    ubx_cfg_msg_nav_aopstatus,
     ubx_cfg_pm2,
     ubx_cfg_aop_enable,
     ubx_cfg_save,
