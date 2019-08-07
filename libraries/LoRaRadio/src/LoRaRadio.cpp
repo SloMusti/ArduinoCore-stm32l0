@@ -477,6 +477,22 @@ void LoRaRadioClass::purge(void)
     while (_rx_read != _rx_write);
 }
 
+void LoRaRadioClass::setTxContinuousWave(unsigned long frequency){
+    Radio.SetTxContinuousWave(frequency,1,1);
+}
+
+int LoRaRadioClass::frequencyRssi(unsigned long frequency)
+{
+    Radio.SetModem(MODEM_FSK);
+    Radio.SetChannel(frequency);
+    Radio.SetIdleMode(IDLE_STANDBY);
+    int16_t rssi = Radio.Rssi();
+    Radio.SetIdleMode(IDLE_STANDBY);
+    Radio.SetModem(MODEM_LORA);
+    return rssi;
+}
+
+
 int LoRaRadioClass::packetRssi()
 {
     return _rx_rssi;

@@ -394,7 +394,7 @@ void GNSSClass::end()
     {
         _uart->end();
         
-        _uart = NULL;
+        //_uart = NULL;
 
 #if defined(STM32L0_CONFIG_PIN_GNSS_BACKUP)
 	stm32l0_gpio_pin_configure(STM32L0_CONFIG_PIN_GNSS_BACKUP, (STM32L0_GPIO_PARK_NONE | STM32L0_GPIO_MODE_ANALOG));

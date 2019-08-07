@@ -32,6 +32,8 @@ available		KEYWORD2
 read			KEYWORD2
 peek			KEYWORD2
 purge			KEYWORD2
+setTxContinuousWave KEYWORD2
+setTxContinuousWave KEYWORD2
 packetRssi		KEYWORD2
 packetSnr		KEYWORD2
 setFrequency		KEYWORD2
